@@ -7,7 +7,8 @@ const { validateEnv } = require('./config/env');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const groupRoutes = require('./routes/groupRoutes');
-const expenseRoutes = require('./routes/expenseRoutes'); // <-- Ensure this is imported
+const expenseRoutes = require('./routes/expenseRoutes');
+const balanceRoutes = require('./routes/balanceRoutes'); // <-- Ensure this is imported
 
 // Load environment variables (ensure this is first after initial requires)
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -24,8 +25,9 @@ app.use(express.json());
 // Mount Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/groups', groupRoutes); // This now also handles /api/groups/:id/expenses
-app.use('/api/expenses', expenseRoutes); // This handles /api/expenses, /api/expenses/:id etc.
+app.use('/api/groups', groupRoutes);
+app.use('/api/', balanceRoutes);
+app.use('/api/expenses', expenseRoutes);
 
 // Basic test route (optional, can remove later)
 app.get('/', (req, res) => {
