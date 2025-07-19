@@ -1,37 +1,38 @@
+// server/server.js
 const dotenv = require('dotenv');
 const path = require('path');
 const express = require('express');
 const connectDB = require('./config/db');
 const { validateEnv } = require('./config/env');
 const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes'); // Add this line
+const userRoutes = require('./routes/userRoutes');
+const groupRoutes = require('./routes/groupRoutes');
+const expenseRoutes = require('./routes/expenseRoutes'); // <-- Ensure this is imported
+
+// Load environment variables (ensure this is first after initial requires)
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-// Validate environment variables first
-// Call this after dotenv.config()
+// Validate environment variables and connect to DB
 validateEnv();
-
-// Connect to MongoDB
 connectDB();
 
-// Initialize Express app AFTER all configurations and imports
-const app = express(); // <-- FIX: Declare and initialize 'app' here
+const app = express();
 
-// Middleware to parse JSON bodies
+// Middleware
 app.use(express.json());
 
-// Mount Auth Routes
-app.use('/api/auth', authRoutes); // This tells Express to use authRoutes for any requests starting with /api/auth
-app.use('/api/users', userRoutes); // All routes starting with /api/users will use userRoutes
+// Mount Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/groups', groupRoutes); // This now also handles /api/groups/:id/expenses
+app.use('/api/expenses', expenseRoutes); // This handles /api/expenses, /api/expenses/:id etc.
 
-// Basic route for testing (keep for now)
+// Basic test route (optional, can remove later)
 app.get('/', (req, res) => {
     res.send('Splitwise Clone API is running...');
 });
 
-// Define PORT and start listening
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
