@@ -10,6 +10,10 @@ const handleMongooseError = (res, error) => {
     if (error.code === 11000) { // Duplicate key error
         return res.status(400).json({ message: 'A group with that name already exists for you.' });
     }
+    // Specific handler for ObjectId cast errors
+    if (error.name === 'CastError' && error.kind === 'ObjectId') {
+        return res.status(400).json({ message: `Invalid ID format for ${error.path}: ${error.value}` });
+    }
     res.status(500).json({ message: 'Server error' });
 };
 
@@ -17,7 +21,7 @@ const handleMongooseError = (res, error) => {
 // @route   POST /api/groups
 // @access  Private
 const createGroup = async (req, res) => {
-    const { name, type, members } = req.body;
+    const { name, type, members } = req.body; // 'members' here should still be an array of user ObjectIds
     const adminId = req.user._id; // Current authenticated user is the admin
 
     // Basic validation for members (ensure they are valid ObjectIds)
@@ -34,7 +38,10 @@ const createGroup = async (req, res) => {
         // Validate if all provided member IDs exist
         const existingUsers = await User.find({ '_id': { $in: members } });
         if (existingUsers.length !== members.length) {
-            return res.status(400).json({ message: 'One or more provided member IDs are invalid.' });
+            // This means some provided IDs are not valid ObjectIds or don't exist
+            // Mongoose's CastError usually catches invalid format earlier,
+            // this checks for non-existent but valid-format IDs.
+            return res.status(400).json({ message: 'One or more provided member IDs are invalid or do not exist.' });
         }
 
         const newGroup = new Group({
@@ -45,9 +52,6 @@ const createGroup = async (req, res) => {
         });
 
         const savedGroup = await newGroup.save();
-
-        // Optional: Update each member's user document to add this group to a 'groups' array if you add it to User schema
-        // For now, we rely on querying Groups directly by user ID in the members array.
 
         res.status(201).json(savedGroup);
     } catch (error) {
@@ -116,14 +120,7 @@ const updateGroup = async (req, res) => {
         group.type = type || group.type;
         group.updatedAt = Date.now();
 
-        const updatedGroup = await group.save(); // Using save() to trigger pre/post hooks if any
-        // Alternatively, use findByIdAndUpdate if no hooks are needed and for simpler updates:
-        // const updatedGroup = await Group.findByIdAndUpdate(
-        //     req.params.id,
-        //     { name, type, updatedAt: Date.now() },
-        //     { new: true, runValidators: true }
-        // ).populate('members', 'username email firstName lastName')
-        // .populate('admin', 'username email firstName lastName');
+        const updatedGroup = await group.save();
 
         res.status(200).json(updatedGroup);
     } catch (error) {
@@ -147,12 +144,9 @@ const deleteGroup = async (req, res) => {
             return res.status(403).json({ message: 'Not authorized to delete this group (Admin only)' });
         }
 
-        // TODO: Before deleting group, consider what to do with associated expenses and payments.
-        // Option 1: Delete all associated expenses and payments.
-        // Option 2: Mark group as inactive.
+        // TODO: In a real app, handle cascading deletes (expenses, payments related to this group)
         // For simplicity, for now, we'll just delete the group.
-        // In a real app, you'd want to handle expense deletion/archiving carefully.
-        await group.deleteOne(); // Mongoose 6+ uses deleteOne()
+        await group.deleteOne();
 
         res.status(200).json({ message: 'Group removed' });
     } catch (error) {
@@ -160,14 +154,16 @@ const deleteGroup = async (req, res) => {
     }
 };
 
-// @desc    Add member(s) to a group
+// @desc    Add member(s) to a group by their username or ID
 // @route   PUT /api/groups/:id/members
 // @access  Private (Admin or existing member)
 const addGroupMembers = async (req, res) => {
-    const { newMemberIds } = req.body; // Array of user IDs to add
+    // newMemberIdentifiers can be an array of usernames OR user ObjectIds
+    const { newMemberIdentifiers } = req.body;
+    const currentUserId = req.user._id;
 
-    if (!newMemberIds || !Array.isArray(newMemberIds) || newMemberIds.length === 0) {
-        return res.status(400).json({ message: 'Please provide an array of new member IDs.' });
+    if (!newMemberIdentifiers || !Array.isArray(newMemberIdentifiers) || newMemberIdentifiers.length === 0) {
+        return res.status(400).json({ message: 'Please provide an array of new member usernames or IDs.' });
     }
 
     try {
@@ -178,33 +174,68 @@ const addGroupMembers = async (req, res) => {
         }
 
         // Check if the current user is a member or admin of the group
-        if (!group.members.some(member => member.equals(req.user._id))) {
+        if (!group.members.some(member => member.equals(currentUserId))) {
             return res.status(403).json({ message: 'Not authorized to add members to this group.' });
         }
 
-        // Validate if new member IDs are actual users
-        const existingNewUsers = await User.find({ '_id': { $in: newMemberIds } });
-        if (existingNewUsers.length !== newMemberIds.length) {
-            return res.status(400).json({ message: 'One or more provided new member IDs are invalid users.' });
+        // Convert provided identifiers (usernames or IDs) into actual User ObjectIds
+        // Separate usernames from potential ObjectIds to avoid casting errors
+        const mongoose = require('mongoose');
+        const potentialIds = [];
+        const usernames = [];
+        
+        newMemberIdentifiers.forEach(identifier => {
+            if (mongoose.Types.ObjectId.isValid(identifier)) {
+                potentialIds.push(identifier);
+            } else {
+                usernames.push(identifier);
+            }
+        });
+
+        // Build the query conditions
+        const queryConditions = [];
+        if (usernames.length > 0) {
+            queryConditions.push({ username: { $in: usernames } });
+        }
+        if (potentialIds.length > 0) {
+            queryConditions.push({ _id: { $in: potentialIds } });
+        }
+
+        // Ensure we have at least one query condition
+        if (queryConditions.length === 0) {
+            return res.status(400).json({ message: 'No valid usernames or IDs provided.' });
+        }
+
+        const foundUsers = await User.find({
+            $or: queryConditions
+        }).select('_id username firstName lastName'); // Select necessary fields for populating response
+
+        if (foundUsers.length !== newMemberIdentifiers.length) {
+            // This indicates some identifiers didn't match any existing users
+            const foundIds = foundUsers.map(u => u._id.toString());
+            const missing = newMemberIdentifiers.filter(
+                id => !foundIds.includes(id) && !foundUsers.some(u => u.username === id)
+            );
+            return res.status(400).json({ message: `One or more provided member identifiers are invalid or do not exist: ${missing.join(', ')}` });
         }
 
         const addedMembers = [];
-        for (const memberId of newMemberIds) {
-            // Check if member already exists in the group
-            if (!group.members.some(m => m.equals(memberId))) {
-                group.members.push(memberId);
-                addedMembers.push(memberId);
+        for (const user of foundUsers) {
+            // Check if member already exists in the group to prevent duplicates
+            if (!group.members.some(m => m.equals(user._id))) {
+                group.members.push(user._id); // Add the ObjectId
+                addedMembers.push(user); // Keep the populated user object for response
             }
         }
 
         if (addedMembers.length === 0) {
-             return res.status(400).json({ message: 'All provided users are already members of this group.' });
+            return res.status(400).json({ message: 'All provided users are already members of this group.' });
         }
 
         group.updatedAt = Date.now();
-        const updatedGroup = await group.save(); // Use save to trigger potential hooks, and persist changes
+        const updatedGroup = await group.save(); // Persist changes
 
-        // Populate the added members in the response
+        // Populate the entire members array in the response to include the newly added ones
         const populatedGroup = await Group.findById(updatedGroup._id)
                                           .populate('members', 'username email firstName lastName')
                                           .populate('admin', 'username email firstName lastName');
@@ -212,6 +243,10 @@ const addGroupMembers = async (req, res) => {
         res.status(200).json(populatedGroup);
 
     } catch (error) {
+        // Handle CastError specifically if an invalid ObjectId format is passed for _id search
+        if (error.name === 'CastError' && error.path === '_id') {
+            return res.status(400).json({ message: `Invalid ID format provided for a member: ${error.value}` });
+        }
         handleMongooseError(res, error);
     }
 };
@@ -238,17 +273,15 @@ const removeGroupMembers = async (req, res) => {
             return res.status(403).json({ message: 'Not authorized to remove members from this group (Admin only).' });
         }
 
-        // Ensure admin cannot remove themselves if they are the only admin.
-        // More complex logic needed if multiple admins or changing admin.
+        // Prevent admin from removing themselves unless there's a specific "transfer admin" logic.
+        // For simplicity, disallow direct admin removal via this route.
         if (memberIdsToRemove.includes(group.admin.toString())) {
-             // If the admin is the only person who can remove, prevent self-removal
-             // if they are the *only* admin. Or force transfer adminship first.
-             // For now, disallow admin self-removal via this route.
-             return res.status(400).json({ message: 'Cannot remove group admin directly via this route. Admin must transfer ownership first.' });
+            return res.status(400).json({ message: 'Cannot remove group admin directly via this route. Admin must transfer ownership first.' });
         }
 
         const initialMemberCount = group.members.length;
-        group.members = group.members.filter(member => !memberIdsToRemove.includes(member.toString()));
+        // Filter out members whose IDs are in memberIdsToRemove
+        group.members = group.members.filter(memberId => !memberIdsToRemove.includes(memberId.toString()));
 
         if (group.members.length === initialMemberCount) {
             return res.status(400).json({ message: 'No specified members were found in the group or could be removed.' });

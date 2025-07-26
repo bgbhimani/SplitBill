@@ -92,10 +92,10 @@ const addExpense = async (req, res) => {
 };
 
 // @desc    Get all expenses for a specific group
-// @route   GET /api/groups/:groupId/expenses
+// @route   GET /api/groups/:id/expenses
 // @access  Private
 const getGroupExpenses = async (req, res) => {
-    const { groupId } = req.params;
+    const groupId = req.params.id; // Changed from req.params.groupId to req.params.id
     const currentUserId = req.user._id;
 
     try {

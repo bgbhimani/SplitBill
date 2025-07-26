@@ -1,46 +1,72 @@
-// client/src/services/api.js
 import axios from 'axios';
 
-// Create an Axios instance
+// Create axios instance with base configuration
 const api = axios.create({
-    // Vite's proxy automatically handles requests starting with /api
-    // In production, this would be your deployed backend URL (e.g., process.env.VITE_API_BASE_URL)
-    headers: {
-        'Content-Type': 'application/json',
-    },
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
-// Request Interceptor: Automatically attach JWT token to outgoing requests
+// Request interceptor to add auth token
 api.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem('token'); // Get token from local storage
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`; // Attach token
-        }
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
-// Response Interceptor (Optional but highly recommended for global error handling)
+// Response interceptor to handle common errors
 api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        // Handle 401 Unauthorized errors globally, e.g., token expired/invalid
-        if (error.response && error.response.status === 401) {
-            console.warn('Authentication expired or invalid. Clearing token and redirecting.');
-            localStorage.removeItem('user');
-            localStorage.removeItem('token');
-            // Using window.location.href for a full refresh to ensure all state is cleared
-            // For a smoother experience, you might use `Maps('/login')` from react-router-dom
-            // if this interceptor is within a React context or component, but for a global handler,
-            // a full reload is often safer to reset the app state completely.
-            window.location.href = '/login'; // Redirect to login page
-        }
-        return Promise.reject(error);
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // Token expired or invalid
+      localStorage.removeItem('token');
+      window.location.href = '/login';
     }
+    return Promise.reject(error);
+  }
 );
+
+// Auth API functions
+export const authAPI = {
+  register: (userData) => api.post('/auth/register', userData),
+  login: (credentials) => api.post('/auth/login', credentials),
+  getProfile: () => api.get('/users/me'),
+};
+
+// Groups API functions
+export const groupsAPI = {
+  createGroup: (groupData) => api.post('/groups', groupData),
+  getMyGroups: () => api.get('/groups'),
+  getGroupById: (groupId) => api.get(`/groups/${groupId}`),
+  updateGroup: (groupId, updateData) => api.put(`/groups/${groupId}`, updateData),
+  deleteGroup: (groupId) => api.delete(`/groups/${groupId}`),
+  addMembers: (groupId, memberIdentifiers) => api.put(`/groups/${groupId}/members`, { newMemberIdentifiers: memberIdentifiers }),
+  removeMembers: (groupId, memberIds) => api.put(`/groups/${groupId}/remove-members`, { memberIdsToRemove: memberIds }),
+  getGroupExpenses: (groupId) => api.get(`/groups/${groupId}/expenses`),
+  getGroupBalances: (groupId) => api.get(`/groups/${groupId}/balances`),
+  getSimplifiedDebts: (groupId) => api.get(`/groups/${groupId}/simplify-debts`),
+};
+
+// Expenses API functions
+export const expensesAPI = {
+  addExpense: (expenseData) => api.post('/expenses', expenseData),
+  getExpenseById: (expenseId) => api.get(`/expenses/${expenseId}`),
+  updateExpense: (expenseId, updateData) => api.put(`/expenses/${expenseId}`, updateData),
+  deleteExpense: (expenseId) => api.delete(`/expenses/${expenseId}`),
+};
+
+// Payments API functions
+export const paymentsAPI = {
+  recordPayment: (paymentData) => api.post('/payments', paymentData),
+};
 
 export default api;

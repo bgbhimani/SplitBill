@@ -22,10 +22,10 @@ const ExpenseSchema = new Schema({
         ref: 'User', // References the User who paid
         required: true
     },
-    splitType: { // e.g., "equal", "exact", "percentage"
+    splitType: { // e.g., "equal", "exact", "percentage", "custom"
         type: String,
         required: [true, 'Please specify a split type'],
-        enum: ['equal', 'exact', 'percentage']
+        enum: ['equal', 'exact', 'percentage', 'custom']
     },
     shares: [ // Defines how the expense is split among members
         {

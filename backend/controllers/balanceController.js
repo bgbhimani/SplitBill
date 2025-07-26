@@ -120,10 +120,10 @@ const simplifyDebts = (balances) => {
 
 
 // @desc    Get current balances for all members within a group
-// @route   GET /api/groups/:groupId/balances
+// @route   GET /api/groups/:id/balances
 // @access  Private
 const getGroupBalances = async (req, res) => {
-    const { groupId } = req.params;
+    const groupId = req.params.id; // Changed from req.params.groupId to req.params.id
     const currentUserId = req.user._id;
 
     try {
@@ -151,10 +151,10 @@ const getGroupBalances = async (req, res) => {
 };
 
 // @desc    Get simplified debt suggestions for a group
-// @route   GET /api/groups/:groupId/simplify-debts
+// @route   GET /api/groups/:id/simplify-debts
 // @access  Private
 const getSimplifiedDebts = async (req, res) => {
-    const { groupId } = req.params;
+    const groupId = req.params.id; // Changed from req.params.groupId to req.params.id
     const currentUserId = req.user._id;
 
     try {
