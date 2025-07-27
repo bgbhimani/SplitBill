@@ -1,0 +1,49 @@
+http://127.0.0.1:5000/predict_category
+
+body:
+{
+    "expense_title":"shampoo"
+}
+
+
+response:
+{
+    "expense_title": "shampoo",
+    "predicted_category": "Groceries"
+}
+
+
+http://127.0.0.1:5000/forecast_expenses
+{
+    "currency": "₹",
+    "forecast": {
+        "next_month_forecast_amount": 10209.54,
+        "next_week_forecast_amount": 2374.9
+    },
+    "status": "success"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
+///
+ 

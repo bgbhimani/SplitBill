@@ -1,0 +1,385 @@
+Date,Expense,Description,Category,Amount,Cr_Dr
+01-01-2025,Reliance Fresh Shopping,Monthly grocery shopping with dal rice oil,Groceries,450,Debit
+01-01-2025,Amul Milk,Fresh milk and curd for daily use,Groceries,85,Debit
+02-01-2025,Sabji Mandi,Onion tomato potato cauliflower,Vegetable,120,Debit
+02-01-2025,Dominos Pizza,Margherita pizza with friends,Food,340,Debit
+03-01-2025,Ola Cab,Home to office morning ride,Taxi,65,Debit
+03-01-2025,McDonald's,McAloo Tikki burger and fries,Food,180,Debit
+04-01-2025,Mother Dairy,Milk bread butter cheese,Groceries,75,Debit
+04-01-2025,Local Vegetable Vendor,Fresh green vegetables,Vegetable,95,Debit
+05-01-2025,Uber Auto,Office to home evening,Taxi,45,Debit
+05-01-2025,Haldiram's,Samosa and tea evening snack,Food,60,Debit
+06-01-2025,Big Bazaar,Weekly grocery shopping,Groceries,380,Debit
+06-01-2025,Street Food Stall,Pav bhaji and lassi,Food,85,Debit
+07-01-2025,HP Petrol Pump,Full tank petrol for bike,Fuel,520,Debit
+07-01-2025,Rapido Bike,Quick ride to market,Taxi,35,Debit
+08-01-2025,Amul Parlour,Milk products and ice cream,Groceries,95,Debit
+08-01-2025,Vegetable Market,Spinach beans carrots,Vegetable,110,Debit
+09-01-2025,AutoRixa,Sarkhej Sanand,Taxi,20,Debit
+09-01-2025,KFC,Zinger burger and chicken,Food,280,Debit
+09-01-2025,Ola Cab,Late night ride home,Taxi,85,Debit
+10-01-2025,Local Dairy,Fresh milk and yogurt,Groceries,65,Debit
+10-01-2025,Subway,Veggie delite sandwich,Food,220,Debit
+10-01-2025,Salary,December 2024 salary,Salary,25000,Credit
+11-01-2025,Sabji Wala,Daily vegetables shopping,Vegetable,75,Debit
+11-01-2025,Starbucks,Cappuccino and cookie,Food,320,Debit
+12-01-2025,Mother Dairy,Milk and bread,Groceries,55,Debit
+12-01-2025,Uber Cab,Airport drop service,Taxi,180,Debit
+13-01-2025,More Supermarket,Monthly shopping,Groceries,420,Debit
+13-01-2025,Chai Tapri,Tea and biscuits,Food,25,Debit
+14-01-2025,HP Fuel Station,Bike refueling,Fuel,480,Debit
+14-01-2025,Local Vendor,Fresh seasonal vegetables,Vegetable,90,Debit
+15-01-2025,Amul Store,Daily dairy needs,Groceries,70,Debit
+15-01-2025,Pizza Hut,Personal pan pizza,Food,250,Debit
+15-01-2025,House Rent,Monthly house rent payment,Rent,12000,Debit
+16-01-2025,Rapido,Short distance ride,Taxi,40,Debit
+16-01-2025,Street Food,Dosa and coconut chutney,Food,65,Debit
+17-01-2025,Vegetable Vendor,Green leafy vegetables,Vegetable,85,Debit
+17-01-2025,Cafe Coffee Day,Coffee and sandwich,Food,180,Debit
+18-01-2025,Mother Dairy,Milk butter and cheese,Groceries,90,Debit
+18-01-2025,Ola Auto,Quick ride to bank,Taxi,55,Debit
+19-01-2025,D-Mart,Bulk grocery shopping,Groceries,350,Debit
+19-01-2025,Burger King,Whopper meal,Food,190,Debit
+20-01-2025,Sabji Mandi,Weekly vegetable shopping,Vegetable,125,Debit
+20-01-2025,Local Tea Stall,Evening tea and snacks,Food,35,Debit
+21-01-2025,Shell Petrol Pump,Full tank fuel,Fuel,510,Debit
+21-01-2025,Uber,Office to home,Taxi,70,Debit
+22-01-2025,Amul Dairy,Fresh milk and curd,Groceries,80,Debit
+22-01-2025,Momo Point,Chicken momos,Food,120,Debit
+23-01-2025,Vegetable Market,Fresh vegetables,Vegetable,95,Debit
+23-01-2025,Barista,Coffee and pastry,Food,160,Debit
+24-01-2025,Mother Dairy,Daily milk supply,Groceries,65,Debit
+24-01-2025,Ola Cab,Mall visit,Taxi,90,Debit
+25-01-2025,Spencer's,Grocery shopping,Groceries,290,Debit
+25-01-2025,Taco Bell,Mexican food,Food,200,Debit
+26-01-2025,Sabji Wala,Republic Day vegetables,Vegetable,110,Debit
+26-01-2025,Street Vendor,Pani puri and bhel,Food,45,Debit
+27-01-2025,HP Fuel,Bike refueling,Fuel,470,Debit
+27-01-2025,Rapido Bike,Quick delivery pickup,Taxi,30,Debit
+28-01-2025,Amul Store,Milk and dairy products,Groceries,85,Debit
+28-01-2025,Lucky Punjabi Dhaba,Dal makhani and roti,Food,150,Debit
+29-01-2025,Local Vegetable Vendor,Fresh produce,Vegetable,80,Debit
+29-01-2025,McDonald's,McVeggie burger,Food,140,Debit
+30-01-2025,Mother Dairy,Monthly dairy shopping,Groceries,120,Debit
+30-01-2025,Uber Auto,Short ride,Taxi,45,Debit
+30-01-2025,Electricity Bill,Monthly electricity payment,Electricity,580,Debit
+31-01-2025,Reliance Fresh,Month end groceries,Groceries,380,Debit
+31-01-2025,Ram Idli Center,South Indian breakfast,Food,90,Debit
+01-02-2025,Sabji Mandi,Fresh vegetables,Vegetable,115,Debit
+01-02-2025,Cafe Coffee Day,Coffee meeting,Food,170,Debit
+02-02-2025,Amul Parlour,Milk and ice cream,Groceries,95,Debit
+02-02-2025,Ola Cab,Weekend outing,Taxi,120,Debit
+03-02-2025,Big Bazaar,Weekend shopping,Groceries,340,Debit
+03-02-2025,Dominos,Pizza party,Food,420,Debit
+04-02-2025,HP Petrol,Fuel refill,Fuel,490,Debit
+04-02-2025,Vegetable Vendor,Daily vegetables,Vegetable,85,Debit
+05-02-2025,Mother Dairy,Fresh milk,Groceries,60,Debit
+05-02-2025,Subway,Healthy lunch,Food,230,Debit
+06-02-2025,Sabji Wala,Vegetable shopping,Vegetable,105,Debit
+06-02-2025,Uber,Evening ride,Taxi,65,Debit
+07-02-2025,Amul Store,Dairy products,Groceries,75,Debit
+07-02-2025,KFC,Fried chicken,Food,320,Debit
+08-02-2025,Local Vendor,Fresh vegetables,Vegetable,90,Debit
+08-02-2025,Starbucks,Premium coffee,Food,280,Debit
+09-02-2025,Mother Dairy,Milk and bread,Groceries,70,Debit
+09-02-2025,Rapido,Quick ride,Taxi,40,Debit
+10-02-2025,More Supermarket,Weekly shopping,Groceries,360,Debit
+10-02-2025,Salary,December 2024 salary,Salary,25000,Credit
+10-02-2025,Street Food,Vada pav and cutting chai,Food,55,Debit
+11-02-2025,Shell Fuel,Bike refueling,Fuel,500,Debit
+11-02-2025,Vegetable Market,Fresh produce,Vegetable,100,Debit
+12-02-2025,Amul Dairy,Daily milk,Groceries,65,Debit
+12-02-2025,Pizza Hut,Lunch treat,Food,290,Debit
+13-02-2025,Sabji Mandi,Weekly vegetables,Vegetable,120,Debit
+13-02-2025,Ola Auto,Market visit,Taxi,50,Debit
+14-02-2025,Mother Dairy,Valentine's Day special,Groceries,85,Debit
+14-02-2025,Romantic Dinner,Valentine's Day restaurant,Food,450,Debit
+15-02-2025,Vegetable Vendor,Fresh vegetables,Vegetable,95,Debit
+15-02-2025,Cafe Coffee Day,Coffee date,Food,240,Debit
+15-02-2025,House Rent,Monthly rent payment,Rent,12000,Debit
+16-02-2025,Amul Store,Dairy shopping,Groceries,80,Debit
+16-02-2025,Uber Cab,Weekend ride,Taxi,110,Debit
+17-02-2025,D-Mart,Bulk grocery shopping,Groceries,380,Debit
+17-02-2025,McDonald's,Quick meal,Food,160,Debit
+18-02-2025,HP Fuel,Petrol refill,Fuel,480,Debit
+18-02-2025,Sabji Wala,Daily vegetables,Vegetable,85,Debit
+19-02-2025,Mother Dairy,Fresh milk,Groceries,70,Debit
+19-02-2025,Burger King,Evening meal,Food,210,Debit
+20-02-2025,Vegetable Market,Seasonal vegetables,Vegetable,110,Debit
+20-02-2025,Rapido Bike,Short ride,Taxi,35,Debit
+21-02-2025,Amul Parlour,Milk and sweets,Groceries,90,Debit
+21-02-2025,Lucky Punjabi Dhaba,North Indian meal,Food,180,Debit
+22-02-2025,Sabji Mandi,Weekend vegetables,Vegetable,125,Debit
+22-02-2025,Starbucks,Coffee and snacks,Food,310,Debit
+23-02-2025,Mother Dairy,Daily dairy,Groceries,65,Debit
+23-02-2025,Ola Cab,Evening outing,Taxi,95,Debit
+24-02-2025,Spencer's,Grocery shopping,Groceries,320,Debit
+24-02-2025,Street Food,Chaat and lassi,Food,70,Debit
+25-02-2025,Shell Petrol,Fuel refill,Fuel,510,Debit
+25-02-2025,Vegetable Vendor,Fresh produce,Vegetable,90,Debit
+26-02-2025,Amul Store,Milk products,Groceries,75,Debit
+26-02-2025,Ram Idli Center,South Indian food,Food,110,Debit
+27-02-2025,Sabji Wala,Daily vegetables,Vegetable,85,Debit
+27-02-2025,Uber Auto,Quick ride,Taxi,45,Debit
+28-02-2025,Mother Dairy,Month end dairy,Groceries,95,Debit
+28-02-2025,Dominos Pizza,Weekend treat,Food,380,Debit
+28-02-2025,Electricity Bill,Monthly electricity,Electricity,620,Debit
+28-02-2025,Water Bill,Monthly water bill,Water,280,Debit
+01-03-2025,Reliance Fresh,Monthly groceries,Groceries,420,Debit
+01-03-2025,Vegetable Market,Fresh vegetables,Vegetable,105,Debit
+02-03-2025,Amul Dairy,Daily milk,Groceries,80,Debit
+02-03-2025,KFC,Chicken meal,Food,270,Debit
+03-03-2025,Sabji Mandi,Holi vegetables,Vegetable,130,Debit
+03-03-2025,Ola Cab,Holi celebration ride,Taxi,85,Debit
+04-03-2025,Mother Dairy,Festival shopping,Groceries,110,Debit
+04-03-2025,Street Food,Holi special sweets,Food,120,Debit
+05-03-2025,HP Fuel,Petrol refill,Fuel,490,Debit
+05-03-2025,Vegetable Vendor,Post festival vegetables,Vegetable,95,Debit
+06-03-2025,Amul Store,Dairy products,Groceries,70,Debit
+06-03-2025,Subway,Healthy lunch,Food,220,Debit
+07-03-2025,Sabji Wala,Weekly vegetables,Vegetable,100,Debit
+07-03-2025,Rapido,Quick delivery,Taxi,40,Debit
+08-03-2025,Mother Dairy,Women's Day special,Groceries,85,Debit
+08-03-2025,Cafe Coffee Day,Women's Day coffee,Food,190,Debit
+09-03-2025,Big Bazaar,Weekend shopping,Groceries,350,Debit
+09-03-2025,Pizza Hut,Weekend pizza,Food,310,Debit
+10-03-2025,Salary,December 2024 salary,Salary,25000,Credit
+10-03-2025,Vegetable Market,Fresh produce,Vegetable,115,Debit
+10-03-2025,Uber Cab,Weekend outing,Taxi,120,Debit
+11-03-2025,Amul Parlour,Milk and ice cream,Groceries,90,Debit
+11-03-2025,Lucky Punjabi Dhaba,North Indian thali,Food,200,Debit
+12-03-2025,Shell Fuel,Bike refueling,Fuel,500,Debit
+12-03-2025,Sabji Mandi,Mid week vegetables,Vegetable,90,Debit
+13-03-2025,Mother Dairy,Daily milk,Groceries,65,Debit
+13-03-2025,McDonald's,Quick bite,Food,150,Debit
+14-03-2025,Vegetable Vendor,Fresh vegetables,Vegetable,85,Debit
+14-03-2025,Ola Auto,Market visit,Taxi,50,Debit
+15-03-2025,Amul Store,Dairy shopping,Groceries,75,Debit
+15-03-2025,Starbucks,Premium coffee,Food,290,Debit
+15-03-2025,House Rent,Monthly rent,Rent,12000,Debit
+16-03-2025,Sabji Wala,Weekend vegetables,Vegetable,110,Debit
+16-03-2025,Burger King,Weekend meal,Food,230,Debit
+17-03-2025,Mother Dairy,Fresh milk,Groceries,70,Debit
+17-03-2025,Rapido Bike,Short ride,Taxi,35,Debit
+18-03-2025,More Supermarket,Weekly shopping,Groceries,370,Debit
+18-03-2025,Street Food,Evening snacks,Food,65,Debit
+19-03-2025,HP Petrol,Fuel refill,Fuel,480,Debit
+19-03-2025,Vegetable Market,Seasonal vegetables,Vegetable,95,Debit
+20-03-2025,Amul Dairy,Daily dairy,Groceries,80,Debit
+20-03-2025,Ram Idli Center,South Indian breakfast,Food,100,Debit
+21-03-2025,Sabji Mandi,Spring vegetables,Vegetable,120,Debit
+21-03-2025,Uber Cab,Evening ride,Taxi,75,Debit
+22-03-2025,Mother Dairy,Weekend dairy,Groceries,85,Debit
+22-03-2025,Dominos,Pizza night,Food,340,Debit
+23-03-2025,Vegetable Vendor,Fresh produce,Vegetable,90,Debit
+23-03-2025,Cafe Coffee Day,Sunday coffee,Food,180,Debit
+24-03-2025,Amul Store,Milk products,Groceries,75,Debit
+24-03-2025,Ola Auto,Quick ride,Taxi,45,Debit
+25-03-2025,D-Mart,Bulk shopping,Groceries,390,Debit
+25-03-2025,KFC,Fried chicken,Food,280,Debit
+26-03-2025,Shell Fuel,Petrol refill,Fuel,510,Debit
+26-03-2025,Sabji Wala,Daily vegetables,Vegetable,85,Debit
+27-03-2025,Mother Dairy,Fresh milk,Groceries,70,Debit
+27-03-2025,Subway,Healthy meal,Food,240,Debit
+28-03-2025,Vegetable Market,Weekend vegetables,Vegetable,105,Debit
+28-03-2025,Rapido,Short distance,Taxi,40,Debit
+29-03-2025,Amul Parlour,Dairy and sweets,Groceries,95,Debit
+29-03-2025,Lucky Punjabi Dhaba,Punjabi meal,Food,190,Debit
+30-03-2025,Sabji Mandi,Month end vegetables,Vegetable,115,Debit
+30-03-2025,Uber Cab,Weekend outing,Taxi,110,Debit
+31-03-2025,Mother Dairy,Month end dairy,Groceries,80,Debit
+31-03-2025,Street Food,Month end treat,Food,85,Debit
+31-03-2025,Electricity Bill,Monthly electricity,Electricity,590,Debit
+01-04-2025,Reliance Fresh,April groceries,Groceries,430,Debit
+01-04-2025,Vegetable Vendor,Fresh vegetables,Vegetable,100,Debit
+02-04-2025,Amul Store,Daily milk,Groceries,75,Debit
+02-04-2025,McDonald's,Quick meal,Food,170,Debit
+03-04-2025,Sabji Wala,Spring vegetables,Vegetable,95,Debit
+03-04-2025,Ola Cab,Office ride,Taxi,60,Debit
+04-04-2025,Mother Dairy,Weekend dairy,Groceries,85,Debit
+04-04-2025,Pizza Hut,Weekend pizza,Food,320,Debit
+05-04-2025,HP Fuel,Bike refueling,Fuel,490,Debit
+05-04-2025,Vegetable Market,Fresh produce,Vegetable,110,Debit
+06-04-2025,Amul Dairy,Daily milk,Groceries,70,Debit
+06-04-2025,Starbucks,Morning coffee,Food,260,Debit
+07-04-2025,Sabji Mandi,Weekly vegetables,Vegetable,90,Debit
+07-04-2025,Rapido Bike,Quick ride,Taxi,35,Debit
+08-04-2025,Mother Dairy,Fresh dairy,Groceries,80,Debit
+08-04-2025,Burger King,Lunch meal,Food,200,Debit
+09-04-2025,Big Bazaar,Weekly shopping,Groceries,360,Debit
+09-04-2025,Street Food,Evening snacks,Food,55,Debit
+10-04-2025,Salary,December 2024 salary,Salary,25000,Credit
+10-04-2025,Vegetable Vendor,Daily vegetables,Vegetable,85,Debit
+10-04-2025,Uber Auto,Market visit,Taxi,50,Debit
+11-04-2025,Amul Store,Milk and cheese,Groceries,90,Debit
+11-04-2025,KFC,Chicken meal,Food,290,Debit
+12-04-2025,Shell Petrol,Fuel refill,Fuel,500,Debit
+12-04-2025,Sabji Wala,Weekend vegetables,Vegetable,105,Debit
+13-04-2025,Mother Dairy,Sunday dairy,Groceries,75,Debit
+13-04-2025,Cafe Coffee Day,Sunday coffee,Food,190,Debit
+14-04-2025,Vegetable Market,Fresh vegetables,Vegetable,95,Debit
+14-04-2025,Ola Cab,Baisakhi celebration,Taxi,120,Debit
+15-04-2025,Amul Parlour,Festival dairy,Groceries,85,Debit
+15-04-2025,Lucky Punjabi Dhaba,Baisakhi special,Food,220,Debit
+15-04-2025,House Rent,Monthly rent,Rent,12000,Debit
+16-04-2025,Sabji Mandi,Post festival vegetables,Vegetable,90,Debit
+16-04-2025,Dominos,Pizza treat,Food,350,Debit
+17-04-2025,Mother Dairy,Daily milk,Groceries,70,Debit
+17-04-2025,Rapido,Quick delivery,Taxi,40,Debit
+18-04-2025,More Supermarket,Weekly shopping,Groceries,380,Debit
+18-04-2025,Ram Idli Center,South Indian meal,Food,120,Debit
+19-04-2025,HP Fuel,Petrol refill,Fuel,480,Debit
+19-04-2025,Vegetable Vendor,Fresh produce,Vegetable,100,Debit
+20-04-2025,Amul Store,Dairy products,Groceries,80,Debit
+20-04-2025,Subway,Healthy lunch,Food,230,Debit
+21-04-2025,Sabji Wala,Weekly vegetables,Vegetable,85,Debit
+21-04-2025,Uber Cab,Weekend ride,Taxi,95,Debit
+22-04-2025,Mother Dairy,Fresh milk,Groceries,75,Debit
+22-04-2025,McDonald's,Quick bite,Food,160,Debit
+23-04-2025,Vegetable Market,Seasonal vegetables,Vegetable,110,Debit
+23-04-2025,Ola Auto,Short ride,Taxi,45,Debit
+24-04-2025,Amul Dairy,Daily dairy,Groceries,85,Debit
+24-04-2025,Starbucks,Coffee meeting,Food,280,Debit
+25-04-2025,D-Mart,Bulk shopping,Groceries,390,Debit
+25-04-2025,Street Food,Evening chaat,Food,70,Debit
+26-04-2025,Shell Fuel,Bike refueling,Fuel,510,Debit
+26-04-2025,Sabji Mandi,Weekend vegetables,Vegetable,95,Debit
+27-04-2025,Mother Dairy,Weekend dairy,Groceries,80,Debit
+27-04-2025,Pizza Hut,Sunday pizza,Food,310,Debit
+28-04-2025,Vegetable Vendor,Fresh vegetables,Vegetable,90,Debit
+28-04-2025,Rapido Bike,Quick ride,Taxi,35,Debit
+29-04-2025,Amul Store,Milk products,Groceries,75,Debit
+29-04-2025,Burger King,Lunch meal,Food,210,Debit
+30-04-2025,Sabji Wala,Month end vegetables,Vegetable,105,Debit
+30-04-2025,Uber Cab,Month end outing,Taxi,85,Debit
+30-04-2025,Electricity Bill,Monthly electricity,Electricity,610,Debit
+30-04-2025,Water Bill,Monthly water,Water,290,Debit
+01-05-2025,Mother Dairy,May Day dairy,Groceries,80,Debit
+01-05-2025,Lucky Punjabi Dhaba,Labor Day meal,Food,180,Debit
+02-05-2025,Reliance Fresh,Monthly groceries,Groceries,440,Debit
+02-05-2025,Vegetable Market,Fresh vegetables,Vegetable,115,Debit
+03-05-2025,Amul Dairy,Daily milk,Groceries,75,Debit
+03-05-2025,KFC,Chicken meal,Food,300,Debit
+04-05-2025,Sabji Mandi,Summer vegetables,Vegetable,90,Debit
+04-05-2025,Ola Cab,Weekend ride,Taxi,70,Debit
+05-05-2025,Mother Dairy,Fresh dairy,Groceries,85,Debit
+05-05-2025,Cafe Coffee Day,Summer coffee,Food,200,Debit
+06-05-2025,HP Fuel,Petrol refill,Fuel,490,Debit
+06-05-2025,Vegetable Vendor,Daily vegetables,Vegetable,95,Debit
+07-05-2025,Amul Store,Milk and ice cream,Groceries,90,Debit
+07-05-2025,Dominos,Pizza night,Food,360,Debit
+08-05-2025,Sabji Wala,Mid week vegetables,Vegetable,85,Debit
+08-05-2025,Rapido,Quick ride,Taxi,40,Debit
+09-05-2025,Mother Dairy,Daily milk,Groceries,70,Debit
+09-05-2025,McDonald's,Quick meal,Food,150,Debit
+10-05-2025,Big Bazaar,Weekend shopping,Groceries,370,Debit
+10-05-2025,Salary,December 2024 salary,Salary,25000,Credit
+10-05-2025,Street Food,Evening snacks,Food,65,Debit
+11-05-2025,Vegetable Market,Fresh produce,Vegetable,100,Debit
+11-05-2025,Uber Auto,Market visit,Taxi,50,Debit
+12-05-2025,Amul Parlour,Dairy and sweets,Groceries,95,Debit
+12-05-2025,Starbucks,Premium coffee,Food,290,Debit
+13-05-2025,Shell Petrol,Fuel refill,Fuel,500,Debit
+13-05-2025,Sabji Mandi,Weekly vegetables,Vegetable,110,Debit
+14-05-2025,Mother Dairy,Fresh milk,Groceries,75,Debit
+14-05-2025,Ram Idli Center,South Indian food,Food,110,Debit
+15-05-2025,Vegetable Vendor,Summer vegetables,Vegetable,90,Debit
+15-05-2025,Ola Cab,Mid month ride,Taxi,80,Debit
+15-05-2025,House Rent,Monthly rent,Rent,12000,Debit
+16-05-2025,Amul Store,Daily dairy,Groceries,80,Debit
+16-05-2025,Subway,Healthy meal,Food,240,Debit
+17-05-2025,Sabji Wala,Weekend vegetables,Vegetable,105,Debit
+17-05-2025,Rapido Bike,Short ride,Taxi,35,Debit
+18-05-2025,Mother Dairy,Weekend dairy,Groceries,85,Debit
+18-05-2025,Pizza Hut,Weekend treat,Food,320,Debit
+19-05-2025,More Supermarket,Weekly shopping,Groceries,380,Debit
+19-05-2025,Burger King,Quick meal,Food,180,Debit
+20-05-2025,HP Fuel,Bike refueling,Fuel,480,Debit
+20-05-2025,Vegetable Market,Fresh vegetables,Vegetable,95,Debit
+21-05-2025,Amul Dairy,Daily milk,Groceries,70,Debit
+21-05-2025,Lucky Punjabi Dhaba,North Indian meal,Food,190,Debit
+22-05-2025,Sabji Mandi,Summer vegetables,Vegetable,100,Debit
+22-05-2025,Uber Cab,Evening ride,Taxi,75,Debit
+23-05-2025,Mother Dairy,Fresh dairy,Groceries,75,Debit
+23-05-2025,KFC,Chicken meal,Food,280,Debit
+24-05-2025,Vegetable Vendor,Daily vegetables,Vegetable,85,Debit
+24-05-2025,Ola Auto,Quick ride,Taxi,45,Debit
+25-05-2025,Amul Store,Milk products,Groceries,90,Debit
+25-05-2025,Cafe Coffee Day,Weekend coffee,Food,190,Debit
+26-05-2025,D-Mart,Bulk shopping,Groceries,390,Debit
+26-05-2025,Street Food,Evening chaat,Food,70,Debit
+27-05-2025,Shell Fuel,Petrol refill,Fuel,510,Debit
+27-05-2025,Sabji Wala,Weekly vegetables,Vegetable,95,Debit
+28-05-2025,Mother Dairy,Fresh milk,Groceries,80,Debit
+28-05-2025,Dominos,Pizza night,Food,340,Debit
+29-05-2025,Vegetable Market,Summer produce,Vegetable,110,Debit
+29-05-2025,Rapido,Quick delivery,Taxi,40,Debit
+30-05-2025,Amul Parlour,Dairy and ice cream,Groceries,95,Debit
+30-05-2025,McDonald's,Quick bite,Food,170,Debit
+31-05-2025,Sabji Mandi,Month end vegetables,Vegetable,90,Debit
+31-05-2025,Uber Cab,Month end ride,Taxi,85,Debit
+31-05-2025,Electricity Bill,Monthly electricity,Electricity,680,Debit
+01-06-2025,Mother Dairy,June dairy,Groceries,80,Debit
+01-06-2025,Starbucks,Summer coffee,Food,270,Debit
+02-06-2025,Reliance Fresh,Monthly groceries,Groceries,450,Debit
+02-06-2025,Vegetable Vendor,Fresh vegetables,Vegetable,105,Debit
+03-06-2025,Amul Store,Daily milk,Groceries,75,Debit
+03-06-2025,Subway,Healthy lunch,Food,250,Debit
+04-06-2025,Sabji Wala,Summer vegetables,Vegetable,90,Debit
+04-06-2025,Ola Cab,Office ride,Taxi,65,Debit
+05-06-2025,Mother Dairy,Fresh dairy,Groceries,85,Debit
+05-06-2025,Pizza Hut,Weekend pizza,Food,330,Debit
+06-06-2025,HP Fuel,Petrol refill,Fuel,490,Debit
+06-06-2025,Vegetable Market,Fresh produce,Vegetable,100,Debit
+07-06-2025,Amul Dairy,Daily milk,Groceries,70,Debit
+07-06-2025,Lucky Punjabi Dhaba,North Indian thali,Food,200,Debit
+08-06-2025,Sabji Mandi,Weekly vegetables,Vegetable,95,Debit
+08-06-2025,Rapido Bike,Quick ride,Taxi,35,Debit
+09-06-2025,Mother Dairy,Fresh milk,Groceries,80,Debit
+09-06-2025,Burger King,Lunch meal,Food,190,Debit
+10-06-2025,Big Bazaar,Weekend shopping,Groceries,370,Debit
+10-06-2025,Salary,December 2024 salary,Salary,25000,Credit
+10-06-2025,Street Food,Evening snacks,Food,60,Debit
+11-06-2025,Vegetable Vendor,Daily vegetables,Vegetable,85,Debit
+11-06-2025,Uber Auto,Market visit,Taxi,50,Debit
+12-06-2025,Amul Store,Milk and cheese,Groceries,90,Debit
+12-06-2025,KFC,Chicken meal,Food,290,Debit
+13-06-2025,Shell Petrol,Fuel refill,Fuel,500,Debit
+13-06-2025,Sabji Wala,Weekend vegetables,Vegetable,110,Debit
+14-06-2025,Mother Dairy,Weekend dairy,Groceries,75,Debit
+14-06-2025,Cafe Coffee Day,Sunday coffee,Food,180,Debit
+15-06-2025,Vegetable Market,Fresh vegetables,Vegetable,95,Debit
+15-06-2025,Ola Cab,Mid month ride,Taxi,80,Debit
+15-06-2025,House Rent,Monthly rent,Rent,12000,Debit
+16-06-2025,Amul Parlour,Dairy and sweets,Groceries,85,Debit
+16-06-2025,Ram Idli Center,South Indian meal,Food,120,Debit
+17-06-2025,Sabji Mandi,Summer vegetables,Vegetable,100,Debit
+17-06-2025,Rapido,Quick delivery,Taxi,40,Debit
+18-06-2025,Mother Dairy,Daily milk,Groceries,70,Debit
+18-06-2025,Dominos,Pizza treat,Food,350,Debit
+19-06-2025,More Supermarket,Weekly shopping,Groceries,380,Debit
+19-06-2025,McDonald's,Quick meal,Food,160,Debit
+20-06-2025,HP Fuel,Bike refueling,Fuel,480,Debit
+20-06-2025,Vegetable Vendor,Fresh produce,Vegetable,90,Debit
+21-06-2025,Amul Store,Father's Day dairy,Groceries,95,Debit
+21-06-2025,Starbucks,Father's Day coffee,Food,280,Debit
+22-06-2025,Sabji Wala,Weekly vegetables,Vegetable,85,Debit
+22-06-2025,Uber Cab,Weekend ride,Taxi,90,Debit
+23-06-2025,Mother Dairy,Fresh dairy,Groceries,80,Debit
+23-06-2025,Subway,Healthy meal,Food,240,Debit
+24-06-2025,Vegetable Market,Summer vegetables,Vegetable,105,Debit
+24-06-2025,Ola Auto,Quick ride,Taxi,45,Debit
+25-06-2025,Amul Dairy,Daily milk,Groceries,75,Debit
+25-06-2025,Lucky Punjabi Dhaba,Punjabi meal,Food,190,Debit
+26-06-2025,D-Mart,Bulk shopping,Groceries,390,Debit
+26-06-2025,Street Food,Evening chaat,Food,70,Debit
+27-06-2025,Shell Fuel,Petrol refill,Fuel,510,Debit
+27-06-2025,Sabji Mandi,Weekend vegetables,Vegetable,95,Debit
+28-06-2025,Mother Dairy,Weekend dairy,Groceries,85,Debit
+28-06-2025,Pizza Hut,Weekend pizza,Food,320,Debit
+29-06-2025,Vegetable Vendor,Fresh vegetables,Vegetable,90,Debit
+29-06-2025,Rapido Bike,Short ride,Taxi,35,Debit
+30-06-2025,Amul Store,Month end dairy,Groceries,80,Debit
+30-06-2025,Burger King,Month end meal,Food,200,Debit
+30-06-2025,Electricity Bill,Monthly electricity,Electricity,720,Debit
+30-06-2025,Water Bill,Monthly water,Water,310,Debit
