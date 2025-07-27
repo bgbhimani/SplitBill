@@ -128,22 +128,6 @@ const AddExpenseModal = ({ isOpen, onClose, onExpenseAdded, preselectedGroupId }
             ...prev,
             category: predictedCategory
           }));
-        } else {
-          // If predicted category is not in our list, try to map it
-          const categoryMapping = {
-            'Food & Dining': 'Food',
-            'Transportation': 'Taxi',
-            'Utilities': 'Electricity',
-            'Shopping': 'Other'
-          };
-          
-          const mappedCategory = categoryMapping[predictedCategory];
-          if (mappedCategory && categories.includes(mappedCategory)) {
-            setFormData(prev => ({
-              ...prev,
-              category: mappedCategory
-            }));
-          }
         }
       }
     } catch (err) {

@@ -11,9 +11,9 @@ CORS(app) # Enable CORS for all routes and origins by default
 
 # Load the Prophet model when the Flask application starts
 try:
-    forecasting_model = joblib.load('prophet_expense_forecaster.pkl')
+    forecasting_model = joblib.load('modules/prophet_expense_forecaster.pkl')
     print("Prophet forecasting model loaded successfully.")
-    category_model = joblib.load("expense_categorizer.pkl")
+    category_model = joblib.load("modules/expense_categorizer.pkl")
     print("Model 'expense_categorizer.pkl' loaded successfully.")
 except FileNotFoundError:
     print("Error: 'prophet_expense_forecaster.pkl' not found. Please train and save the model first.")
@@ -96,4 +96,4 @@ def predict_category():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=500)

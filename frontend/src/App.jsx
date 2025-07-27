@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
+import PersonalExpenses from './pages/PersonalExpenses';
 import GroupDetail from './components/groups/GroupDetail';
 
 function AppRoutes() {
@@ -39,6 +40,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/personal-expenses"
+        element={
+          <ProtectedRoute>
+            <PersonalExpenses />
           </ProtectedRoute>
         }
       />

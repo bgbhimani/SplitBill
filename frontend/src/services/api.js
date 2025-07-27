@@ -69,4 +69,13 @@ export const paymentsAPI = {
   recordPayment: (paymentData) => api.post('/payments', paymentData),
 };
 
+// Personal Expenses API functions
+export const personalExpensesAPI = {
+  addPersonalExpense: (expenseData) => api.post('/personal-expenses', expenseData),
+  getMyPersonalExpenses: () => api.get('/personal-expenses'),
+  getPersonalExpenseById: (expenseId) => api.get(`/personal-expenses/${expenseId}`),
+  updatePersonalExpense: (expenseId, updateData) => api.put(`/personal-expenses/${expenseId}`, updateData),
+  deletePersonalExpense: (expenseId) => api.delete(`/personal-expenses/${expenseId}`),
+};
+
 export default api;
