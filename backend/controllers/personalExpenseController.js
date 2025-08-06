@@ -1,4 +1,4 @@
-// server/controllers/personalExpenseController.js
+
 const PersonalExpense = require('../models/PersonalExpense');
 // Optional: If you implement activity logging
 // const Activity = require('../models/Activity');
@@ -19,7 +19,7 @@ const handleMongooseError = (res, error) => {
 // @route   POST /api/personal-expenses
 // @access  Private
 const addPersonalExpense = async (req, res) => {
-    const { description, amount, date, notes, category } = req.body;
+    const { description, amount, date, type, notes, category } = req.body;
     const userId = req.user._id; // The authenticated user is the one adding the expense
 
     try {
@@ -29,6 +29,7 @@ const addPersonalExpense = async (req, res) => {
             amount,
             date: date || Date.now(),
             notes,
+            type,
             category
         });
 

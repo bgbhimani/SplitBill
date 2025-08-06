@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { personalExpensesAPI } from '../../services/api';
+import { mlServices } from '../../services/mlAPI';
 
 const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
     const [formData, setFormData] = useState({
@@ -7,10 +8,13 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
         amount: '',
         date: new Date().toISOString().split('T')[0], // Today's date
         category: '',
+        type: 'debit', // Default to debit (expense)
         notes: ''
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [predictingCategory, setPredictingCategory] = useState(false);
+    const [suggestedCategory, setSuggestedCategory] = useState('');
 
     const predefinedCategories = [
         'Groceries',
@@ -31,12 +35,38 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
             ...prev,
             [name]: value
         }));
+
+        // Auto-predict category when description changes
+        if (name === 'description' && value.trim().length > 2) {
+            predictCategory(value.trim());
+        }
+    };
+
+    const predictCategory = async (description) => {
+        try {
+            setPredictingCategory(true);
+            const response = await mlServices.predictCategory(description);
+            setSuggestedCategory(response.predicted_category);
+        } catch (error) {
+            console.error('Failed to predict category:', error);
+            setSuggestedCategory('');
+        } finally {
+            setPredictingCategory(false);
+        }
+    };
+
+    const applySuggestedCategory = () => {
+        setFormData(prev => ({
+            ...prev,
+            category: suggestedCategory
+        }));
+        setSuggestedCategory('');
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.description.trim() || !formData.amount) {
+        if (!formData.description.trim() || !formData.amount || !formData.type) {
             setError('Please fill in all required fields');
             return;
         }
@@ -63,6 +93,7 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
                 amount: '',
                 date: new Date().toISOString().split('T')[0],
                 category: '',
+                type: 'debit',
                 notes: ''
             });
 
@@ -81,6 +112,7 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
             amount: '',
             date: new Date().toISOString().split('T')[0],
             category: '',
+            type: 'debit',
             notes: ''
         });
         setError('');
@@ -94,7 +126,7 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
             <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
                 <div className="mt-3">
                     <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-medium text-gray-900">Add Personal Expense</h3>
+                        <h3 className="text-lg font-medium text-gray-900">Add Personal Transaction</h3>
                         <button
                             onClick={handleClose}
                             className="text-gray-400 hover:text-gray-600"
@@ -122,7 +154,7 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
                                 name="description"
                                 value={formData.description}
                                 onChange={handleInputChange}
-                                placeholder="Enter expense description"
+                                placeholder="Enter transaction description"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                             />
@@ -147,6 +179,24 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
                         </div>
 
                         <div>
+                            <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
+                                Transaction Type *
+                            </label>
+                            <select
+                                id="type"
+                                name="type"
+                                value={formData.type}
+                                onChange={handleInputChange}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required
+                            >
+                                <option value="">Select transaction type</option>
+                                <option value="debit">💸 Debit (Expense/Money Out)</option>
+                                <option value="credit">💰 Credit (Income/Money In)</option>
+                            </select>
+                        </div>
+
+                        <div>
                             <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
                                 Date
                             </label>
@@ -163,7 +213,29 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
                         <div>
                             <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
                                 Category
+                                {predictingCategory && (
+                                    <span className="text-blue-500 text-xs ml-2">🤖 Predicting...</span>
+                                )}
                             </label>
+                            
+                            {/* AI Suggestion Banner */}
+                            {suggestedCategory && !formData.category && (
+                                <div className="mb-2 p-2 bg-blue-50 border border-blue-200 rounded-md">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm text-blue-700">
+                                            🤖 AI suggests: <strong>{suggestedCategory}</strong>
+                                        </span>
+                                        <button
+                                            type="button"
+                                            onClick={applySuggestedCategory}
+                                            className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                                        >
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                            
                             <select
                                 id="category"
                                 name="category"
@@ -206,9 +278,13 @@ const AddPersonalExpenseModal = ({ isOpen, onClose, onExpenseAdded }) => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                className={`px-4 py-2 text-sm font-medium text-white rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                                    formData.type === 'credit' 
+                                        ? 'bg-green-600 hover:bg-green-700' 
+                                        : 'bg-red-600 hover:bg-red-700'
+                                }`}
                             >
-                                {loading ? 'Adding...' : 'Add Expense'}
+                                {loading ? 'Adding...' : `Add ${formData.type === 'credit' ? 'Credit' : 'Debit'}`}
                             </button>
                         </div>
                     </form>

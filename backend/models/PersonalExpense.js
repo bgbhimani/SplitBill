@@ -31,6 +31,11 @@ const PersonalExpenseSchema = new Schema({
         trim: true,
         default: 'Other'
     },
+    type: {
+        type: String,
+        trim: true,
+        default: 'debit'
+    },
     createdAt: {
         type: Date,
         default: Date.now

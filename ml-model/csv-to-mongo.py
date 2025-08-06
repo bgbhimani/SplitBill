@@ -7,11 +7,11 @@ import datetime
 MONGO_URI = "mongodb://localhost:27017/" # Your MongoDB connection URI
 DATABASE_NAME = "splitwise"     # Name of your database
 COLLECTION_NAME = "personalexpenses"             # Name of your collection
-CSV_FILE_PATH = "your_expenses.csv"      # Path to your CSV file
+CSV_FILE_PATH = "Notebook/expense3.csv"      # Path to your CSV file
 # Replace with an actual user ID from your system, or generate a placeholder
 # If you have a 'users' collection, you'd fetch an ID from there.
 # For a simple import, you might use a fixed placeholder ID.
-PLACEHOLDER_USER_ID = ObjectId("687b9047645cf1c087a54430")
+PLACEHOLDER_USER_ID = ObjectId("687bfd482915b868e67d3c96")
 
 # --- Connect to MongoDB ---
 try:
@@ -48,12 +48,14 @@ for index, row in df.iterrows():
             "userId": PLACEHOLDER_USER_ID,
             "description": row['Expense'],
             "amount": float(row['Amount']), # Ensure amount is a number
-            "date": parsed_date,            # Stored as datetime object
+            "date": parsed_date,             # Stored as datetime object
+            "type" : row['Cr_Dr'].lower(),
             "notes": row['Description'],
             "category": row['Category'],
             "createdAt": datetime.datetime.utcnow(), # Current UTC time for creation
             "__v": 0 # Optional: if you need this for Mongoose compatibility
         }
+        print(f"Processed row {index}: {document}")
         mongo_documents.append(document)
     except ValueError as ve:
         print(f"Error parsing date or amount for row {index}: {row.to_dict()} - {ve}")

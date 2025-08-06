@@ -1,0 +1,34 @@
+Date,Expense,Description,Category,Amount,Cr_Dr
+01-07-2025,Reliance Fresh Shopping,Monthly grocery shopping with dal rice oil,Groceries,450,Debit
+01-07-2025,Amul Milk,Fresh milk and curd for daily use,Groceries,85,Debit
+02-07-2025,Sabji Mandi,Onion tomato potato cauliflower,Vegetable,120,Debit
+02-07-2025,Dominos Pizza,Margherita pizza with friends,Food,340,Debit
+03-07-2025,Ola Cab,Home to office morning ride,Taxi,65,Debit
+03-07-2025,McDonald's,McAloo Tikki burger and fries,Food,180,Debit
+04-07-2025,Mother Dairy,Milk bread butter cheese,Groceries,75,Debit
+04-07-2025,Local Vegetable Vendor,Fresh green vegetables,Vegetable,95,Debit
+05-07-2025,Uber Auto,Office to home evening,Taxi,45,Debit
+05-07-2025,Haldiram's,Samosa and tea evening snack,Food,60,Debit
+06-07-2025,Big Bazaar,Weekly grocery shopping,Groceries,380,Debit
+06-07-2025,Street Food Stall,Pav bhaji and lassi,Food,85,Debit
+07-07-2025,HP Petrol Pump,Full tank petrol for bike,Fuel,520,Debit
+07-07-2025,Rapido Bike,Quick ride to market,Taxi,35,Debit
+08-07-2025,Amul Parlour,Milk products and ice cream,Groceries,95,Debit
+08-07-2025,Vegetable Market,Spinach beans carrots,Vegetable,110,Debit
+09-07-2025,AutoRixa,Sarkhej Sanand,Taxi,20,Debit
+09-07-2025,KFC,Zinger burger and chicken,Food,280,Debit
+09-07-2025,Ola Cab,Late night ride home,Taxi,85,Debit
+10-07-2025,Local Dairy,Fresh milk and yogurt,Groceries,65,Debit
+10-07-2025,Subway,Veggie delite sandwich,Food,220,Debit
+10-07-2025,Salary,December 2024 salary,Salary,25000,Credit
+11-07-2025,Sabji Wala,Daily vegetables shopping,Vegetable,75,Debit
+11-07-2025,Starbucks,Cappuccino and cookie,Food,320,Debit
+12-07-2025,Mother Dairy,Milk and bread,Groceries,55,Debit
+12-07-2025,Uber Cab,Airport drop service,Taxi,180,Debit
+13-07-2025,More Supermarket,Monthly shopping,Groceries,420,Debit
+13-07-2025,Chai Tapri,Tea and biscuits,Food,25,Debit
+14-07-2025,HP Fuel Station,Bike refueling,Fuel,480,Debit
+14-07-2025,Local Vendor,Fresh seasonal vegetables,Vegetable,90,Debit
+15-07-2025,Amul Store,Daily dairy needs,Groceries,70,Debit
+15-07-2025,Pizza Hut,Personal pan pizza,Food,250,Debit
+15-07-2025,House Rent,Monthly house rent payment,Rent,12000,Debit

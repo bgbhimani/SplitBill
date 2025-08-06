@@ -78,4 +78,7 @@ export const personalExpensesAPI = {
   deletePersonalExpense: (expenseId) => api.delete(`/personal-expenses/${expenseId}`),
 };
 
+// Import ML services
+export { mlServices } from './mlAPI.js';
+
 export default api;

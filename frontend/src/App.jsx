@@ -8,6 +8,7 @@ import Register from './components/auth/Register';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import PersonalExpenses from './pages/PersonalExpenses';
+import Analytics from './pages/Analytics';
 import GroupDetail from './components/groups/GroupDetail';
 
 function AppRoutes() {
@@ -48,6 +49,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <PersonalExpenses />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/analytics"
+        element={
+          <ProtectedRoute>
+            <Analytics />
           </ProtectedRoute>
         }
       />
