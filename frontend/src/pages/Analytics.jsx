@@ -161,7 +161,7 @@ const Analytics = () => {
           </div>
         )}
 
-        {/* Debug Information - Only show if stats exist but totals are 0 */}
+        {/* Debug Information - Only show if stats exist but totals are 0
         {stats && stats.totalThisMonth === 0 && (
           <div className="mb-6 bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg">
             <h3 className="font-medium">Debug Information:</h3>
@@ -176,7 +176,7 @@ const Analytics = () => {
               </pre>
             </details>
           </div>
-        )}
+        )} */}
 
         {/* Quick Stats */}
         {stats && (

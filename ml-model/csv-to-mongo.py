@@ -7,11 +7,11 @@ import datetime
 MONGO_URI = "mongodb://localhost:27017/" # Your MongoDB connection URI
 DATABASE_NAME = "splitwise"     # Name of your database
 COLLECTION_NAME = "personalexpenses"             # Name of your collection
-CSV_FILE_PATH = "Notebook/expense3.csv"      # Path to your CSV file
+CSV_FILE_PATH = "Notebook/expense4.csv"      # Path to your CSV file
 # Replace with an actual user ID from your system, or generate a placeholder
 # If you have a 'users' collection, you'd fetch an ID from there.
 # For a simple import, you might use a fixed placeholder ID.
-PLACEHOLDER_USER_ID = ObjectId("687bfd482915b868e67d3c96")
+PLACEHOLDER_USER_ID = ObjectId("689394b295223c0022132ad7")
 
 # --- Connect to MongoDB ---
 try:

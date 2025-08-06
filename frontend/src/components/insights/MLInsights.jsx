@@ -14,7 +14,6 @@ const MLInsights = () => {
   // Simple test function to check ML service connectivity
   const testMLService = async () => {
     try {
-      console.log('Testing ML service connection...');
       const response = await fetch('http://localhost:5001/predict_category', {
         method: 'POST',
         headers: {
@@ -24,15 +23,11 @@ const MLInsights = () => {
       });
       
       if (response.ok) {
-        const data = await response.json();
-        console.log('ML service is working:', data);
         return true;
       } else {
-        console.error('ML service responded with error:', response.status);
         return false;
       }
     } catch (error) {
-      console.error('ML service connection failed:', error);
       return false;
     }
   };
@@ -84,11 +79,10 @@ const MLInsights = () => {
       });
 
     } catch (error) {
-      console.error('Error fetching ML insights:', error);
       setInsights(prev => ({
         ...prev,
         loading: false,
-        error: 'Failed to load insights. Check console for details.'
+        error: 'Failed to load insights. Please try again later.'
       }));
     }
   };
@@ -134,9 +128,6 @@ const MLInsights = () => {
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
           <div className="font-medium">Error:</div>
           <div>{insights.error}</div>
-          <div className="text-sm mt-2">
-            Debug info: User ID: {user?._id || 'Not available'}
-          </div>
         </div>
       )}
 
@@ -205,17 +196,6 @@ const MLInsights = () => {
             )}
           </div>
         )}
-
-        {/* Debug Information */}
-        <div className="border-l-4 border-gray-500 pl-4">
-          <h4 className="font-medium text-gray-900 mb-2">🔧 Debug Info</h4>
-          <div className="text-xs text-gray-600 space-y-1">
-            <div>User ID: {user?._id || 'Not available'}</div>
-            <div>Predictions: {insights.predictions ? '✅ Loaded' : '❌ No data'}</div>
-            <div>Budget Recs: {insights.budgetRecommendations ? '✅ Loaded' : '❌ No data'}</div>
-            <div>Anomalies: {insights.anomalies ? '✅ Loaded' : '❌ No data'}</div>
-          </div>
-        </div>
 
         {/* No data message */}
         {!insights.predictions && !insights.budgetRecommendations && !insights.anomalies && !insights.error && (
