@@ -23,7 +23,7 @@ COPY . .
 
 # Expose the API port (flask usually runs on 5000, 
 # but backend is likely on 5000 too if default, check server.js for conflict)
-EXPOSE 5001
+EXPOSE 8001
 
 # Run the Flask server
 CMD ["python", "app.py"]

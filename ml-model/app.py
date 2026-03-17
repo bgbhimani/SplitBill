@@ -10,7 +10,8 @@ from anomaly_detector import detect_anomalies_for_user
 from sklearn.pipeline import make_pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
-
+import dotenv
+dotenv.load_dotenv()  # Load environment variables from .env file
 import os
 
 app = Flask(__name__)
@@ -209,4 +210,4 @@ def predict_category():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=os.getenv("PORT"), debug=True)

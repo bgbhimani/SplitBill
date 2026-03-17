@@ -14,12 +14,12 @@ services:
       context: ./backend
     container_name: splitwise-backend
     ports:
-      - "5000:5000"
+      - "8002:8002"
     environment:
-      - PORT=5000
+      - PORT=8002
       - MONGODB_URI=mongodb://db:27017/splitwise
       - JWT_SECRET=your_jwt_secret_here
-      - ML_URL=http://ml-model:5001
+      - ML_URL=http://ml-model:8001
       - FRONTEND_URL=http://localhost:5173
     depends_on:
       - db
@@ -29,7 +29,7 @@ services:
       context: ./ml-model
     container_name: splitwise-ml
     ports:
-      - "5001:5001"
+      - "8001:8001"
     environment:
       - MONGODB_URI=mongodb://db:27017/splitwise
     depends_on:
@@ -42,8 +42,8 @@ services:
     ports:
       - "5173:80"
     environment:
-      - VITE_API_BASE_URL=http://localhost:5000/api
-      - VITE_ML_API_URL=http://localhost:5001
+      - VITE_API_BASE_URL=http://localhost:8002/api
+      - VITE_ML_API_URL=http://localhost:8001
       - VITE_APP_NAME=Splitwise Clone
     depends_on:
       - backend
