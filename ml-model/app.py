@@ -11,10 +11,14 @@ from sklearn.pipeline import make_pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
+import os
+
 app = Flask(__name__)
 CORS(app)  
 
-client = MongoClient("mongodb://127.0.0.1:27017")  # Adjust if needed
+# Use environment variable for MongoDB URI, default to local if not set
+mongo_uri = os.environ.get("MONGODB_URI", "mongodb://127.0.0.1:27017")
+client = MongoClient(mongo_uri)  
 db = client["splitwise"]
 collection = db["personalexpenses"]
 
@@ -205,4 +209,4 @@ def predict_category():
 
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
