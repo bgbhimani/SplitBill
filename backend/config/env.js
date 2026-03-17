@@ -1,10 +1,8 @@
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load environment variables from .env file
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-// Validate essential environment variables
 const validateEnv = () => {
     const requiredEnvVars = ['PORT', 'MONGODB_URI', 'JWT_SECRET'];
     for (const varName of requiredEnvVars) {

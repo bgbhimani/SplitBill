@@ -10,6 +10,7 @@ start cmd /k "cd /d E:\Projects\Splitwise\ml-model && python app.py"
 
 REM Start Frontend Server
 start cmd /k "cd /d E:\Projects\Splitwise\frontend && npm run dev"
+start cmd /k "start /max http://localhost:5173/"
 
 echo All services starting...
 echo - Backend: http://localhost:5000

@@ -37,7 +37,7 @@ def detect_anomalies_for_user(user_id):
     df['amount'] = df['amount'].astype(float)
     df['timestamp'] = pd.to_datetime(df['date'])
     df = df.dropna(subset=['amount'])
-    df = df[df['amount'] > 0]  # Only positive amounts
+    df = df[df['amount'] > 0]  
     
     if len(df) < 10:
         return {
@@ -47,32 +47,25 @@ def detect_anomalies_for_user(user_id):
             "total_expenses": len(df)
         }
 
-    # Feature engineering
     df['day_of_week'] = df['timestamp'].dt.dayofweek
     df['hour'] = df['timestamp'].dt.hour
     df['category_encoded'] = pd.factorize(df.get('category', ['Unknown'] * len(df)))[0]
     
-    # Calculate amount percentiles
     avg_amount = df['amount'].mean()
     df['amount_ratio'] = df['amount'] / avg_amount
 
-    # Feature set for anomaly detection
     features = df[['amount', 'day_of_week', 'hour', 'category_encoded', 'amount_ratio']]
     features = features.fillna(features.mean())  # Fill any remaining NaN values
 
-    # Train Isolation Forest model
     model = IsolationForest(contamination=0.1, random_state=42, n_estimators=100)
     anomaly_labels = model.fit_predict(features)
     anomaly_scores = model.decision_function(features)
 
-    # Mark anomalies (-1 = anomaly)
     df['is_anomaly'] = anomaly_labels == -1
     df['anomaly_score'] = anomaly_scores
 
-    # Get anomalous expenses
     anomalous_expenses = df[df['is_anomaly']].copy()
     
-    # Format anomalies for output
     anomalies = []
     for _, row in anomalous_expenses.iterrows():
         expense_dict = row.to_dict()
@@ -86,7 +79,6 @@ def detect_anomalies_for_user(user_id):
             "reason": determine_anomaly_reason(expense_dict, avg_amount, df)
         })
     
-    # Sort by anomaly score (most anomalous first)
     anomalies.sort(key=lambda x: x['anomaly_score'])
 
     return {
@@ -100,22 +92,16 @@ def detect_anomalies_for_user(user_id):
     }
 
 def determine_anomaly_reason(expense_dict, avg_amount, df):
-    """
-    Determine why an expense was flagged as anomalous
-    """
     reasons = []
     amount = expense_dict['amount']
     
-    # Check if amount is significantly higher than average
     if amount > avg_amount * 2:
         reasons.append(f"Amount is {amount/avg_amount:.1f}x higher than average")
     
-    # Check if amount is in top 10% of all expenses
     amount_percentile = (df['amount'] < amount).sum() / len(df) * 100
     if amount_percentile > 90:
         reasons.append(f"Amount is in top {100-amount_percentile:.1f}% of all expenses")
     
-    # Check for unusual timing
     if 'hour' in expense_dict:
         hour = expense_dict['hour']
         if hour < 6 or hour > 23:

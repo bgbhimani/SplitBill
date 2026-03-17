@@ -10,7 +10,7 @@ import Dashboard from './pages/Dashboard';
 import PersonalExpenses from './pages/PersonalExpenses';
 import Analytics from './pages/Analytics';
 import GroupDetail from './components/groups/GroupDetail';
-
+    
 function AppRoutes() {
   const { isAuthenticated, loading } = useAuth();
 

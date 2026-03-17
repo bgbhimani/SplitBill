@@ -12,17 +12,14 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
 
-# MongoDB setup
 client = MongoClient("mongodb://127.0.0.1:27017")  # Adjust if needed
 db = client["splitwise"]
 collection = db["personalexpenses"]
 
-# Timezone
 IST = pytz.timezone('Asia/Kolkata')
 
-# Health check endpoint
 @app.route('/health', methods=['GET'])
 def health_check():
     try:
@@ -111,7 +108,6 @@ def predict_expense(user_id):
 @app.route('/budget/<user_id>', methods=['GET'])
 def budget_recommendation(user_id):
     try:
-        # Fetch user expenses
         expenses = list(collection.find({"userId": ObjectId(user_id)}))
 
         if not expenses:
@@ -119,31 +115,24 @@ def budget_recommendation(user_id):
 
         df = pd.DataFrame(expenses)
 
-        # Ensure required fields
         if 'date' not in df.columns or 'amount' not in df.columns or 'category' not in df.columns:
             return jsonify({"error": "Missing required fields in data."}), 400
 
-        # Convert and localize date
         df['date'] = pd.to_datetime(df['date'])
         df['date'] = df['date'].dt.tz_localize('UTC').dt.tz_convert('Asia/Kolkata')
 
-        # Remove invalid amounts
         df = df.dropna(subset=['amount', 'category'])
         df = df[df['amount'] > 0]
 
         if df.empty:
             return jsonify({"error": "Not enough valid data for recommendation."}), 400
 
-        # Tag months
         df['month'] = df['date'].dt.to_period('M')
 
-        # Calculate per-month totals per category
         grouped = df.groupby(['category', 'month'])['amount'].sum().reset_index()
 
-        # Calculate monthly average per category
         monthly_avg = grouped.groupby('category')['amount'].mean()
 
-        # Round for output
         budget_recommendation = {cat: round(amt, 2) for cat, amt in monthly_avg.items()}
 
         response = {
@@ -151,7 +140,6 @@ def budget_recommendation(user_id):
             "expense_recommendation": budget_recommendation
         }
 
-        # Optional: include a message if data is < 3 months
         unique_months = df['month'].nunique()
         if unique_months < 3:
             response["note"] = f"Only {unique_months} month(s) of data available. Estimates may be less accurate."
@@ -171,15 +159,7 @@ def anomaly(user_id):
 
 
 def train_model_from_mongodb():
-    # """
-    # Train the category prediction model using MongoDB data.
-    # """
-    # # Connect to MongoDB
-    # client = MongoClient("mongodb://localhost:27017/")
-    # db = client["your_database_name"]
-    # collection = db["your_collection_name"]
 
-    # Fetch records with 'description' and 'category'
     records = list(collection.find({
         "description": {"$exists": True},
         "category": {"$exists": True}
@@ -188,16 +168,13 @@ def train_model_from_mongodb():
     if len(records) < 10:
         return None, "Not enough data to train the model."
 
-    # Load into DataFrame
     df = pd.DataFrame(records)
     df['description'] = df['description'].astype(str)
     df['category'] = df['category'].astype(str)
 
-    # Prepare X and y
     X = df['description']
     y = df['category']
 
-    # Train the pipeline
     model = make_pipeline(TfidfVectorizer(), MultinomialNB())
     model.fit(X, y)
 
@@ -215,12 +192,10 @@ def predict_category():
 
     expense_title = data['expense_title']
 
-    # Train model from MongoDB data
     category_model, error = train_model_from_mongodb()
     if error:
         return jsonify({"error": error}), 500
 
-    # Predict
     predicted_category = category_model.predict([expense_title])[0]
 
     return jsonify({
