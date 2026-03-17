@@ -21,8 +21,8 @@ This command builds the images for all services and starts them alongside a Mong
 
 ### 2. Access the Applications
 - **Frontend**: [http://localhost:5173](http://localhost:5173)
-- **Backend API**: [http://localhost:5000](http://localhost:5000)
-- **ML Service**: [http://localhost:5001](http://localhost:5001)
+- **Backend API**: [http://localhost:8002](http://localhost:8002)
+- **ML Service**: [http://localhost:8001](http://localhost:8001)
 - **MongoDB**: `mongodb://localhost:27017`
 
 
